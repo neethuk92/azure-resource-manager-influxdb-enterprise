@@ -40,7 +40,7 @@
         }
     },
     "variables": {
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').subnet.data.vnet, parameters('networkSettings').subnet.data.name)]",
+        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').subnet.meta.vnet, parameters('networkSettings').subnet.meta.name)]",
         "vmName": "[concat('vm', parameters('namespace'))]",
         "publicIpName": "[concat('pip-', parameters('namespace'))]",
         "securityGroupName": "[concat('nsg-', parameters('namespace'))]",
