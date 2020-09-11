@@ -83,12 +83,6 @@
                         "properties": {
                             "addressPrefix": "[parameters('networkSettings').subnet.meta.prefix]"
                         }
-                    },
-                    {
-                        "name": "[parameters('networkSettings').subnet.data.name]",
-                        "properties": {
-                            "addressPrefix": "[parameters('networkSettings').subnet.data.prefix]"
-                        }
                     }
                 ]
             }
