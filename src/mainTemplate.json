@@ -4,7 +4,7 @@
     "parameters": {
         "_artifactsLocation": {
             "type": "string",
-            "defaultValue": "[deployment().properties.templateLink.uri]",
+            "defaultValue": "https://raw.githubusercontent.com/neethuk92/azure-resource-manager-influxdb-enterprise/develop/src/",
             "metadata": {
                 "description": "The base URI where artifacts required by this template are located, including a trailing '/'"
             }
@@ -302,14 +302,14 @@
         "networkSettings": {
             "platformFaultDomainCount": "[if(contains(variables('locations'), variables('location')), variables('locations')[variables('location')].platformFaultDomainCount, 2)]",
             "metaNodesIpPrefix": "10.0.0.1",
-            "dataNodesIpPrefix": "10.0.1.1",
+			"dataNodesIpPrefix": "10.0.0.3",
             "managementPort": "22",
             "virtualNetworkName": "[parameters('virtualNetworkName')]",
-            "addressPrefix": "10.0.0.0/16",
+            "addressPrefix": "10.0.0.0/24",
             "subnet": {
                 "meta": {
                     "name": "meta",
-                    "prefix": "10.0.0.0/24",
+                    "prefix": "10.0.0.0/26",
                     "vnet": "[parameters('virtualNetworkName')]"
                 }
             }
@@ -407,7 +407,7 @@
                         "value": "[parameters('loadBalancerType')]"
                     },
                     "ilbIpAddress": {
-                        "value": "10.0.0.100"
+                        "value": "10.0.0.50"
                     }
                 }
             }
