@@ -172,7 +172,13 @@
             "metadata": {
                 "description": "Virtual Network"
             }
-        }
+        },
+	  "virtualNetworkResourceGroup": {
+            "type": "string",
+             "metadata": {
+                "description": "Resource Group VNET is deployed in"
+             }
+        },
     },
     "variables": {
         "password": {
@@ -304,6 +310,7 @@
             "metaNodesIpPrefix": "10.0.0.1",
 			"dataNodesIpPrefix": "10.0.0.3",
             "managementPort": "22",
+	     "virtualNetworkResourceGroup":"[parameters('virtualNetworkResourceGroup')]",
             "virtualNetworkName": "[parameters('virtualNetworkName')]",
             "addressPrefix": "10.0.0.0/24",
             "subnet": {
