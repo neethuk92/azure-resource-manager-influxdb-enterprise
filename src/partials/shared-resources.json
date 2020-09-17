@@ -8,12 +8,6 @@
                 "description": "Location where resources will be provisioned"
             }
         },
-        "virtualNetworkResourceGroup": {
-            "type": "string",
-             "metadata": {
-                "description": "Resource Group VNET is deployed in"
-             }
-        },
         "networkSettings": {
             "type": "object",
             "metadata": {
@@ -54,7 +48,7 @@
                 "Name": "LBFE",
                 "Properties": {
                     "subnet": {
-                        "Id": "[resourceId(parameters('virtualNetworkResourceGroup'),'Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').virtualNetworkName, parameters('networkSettings').subnet.meta.name)]"
+                        "Id": "[resourceId(parameters('networkSettings').virtualNetworkResourceGroup,'Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').virtualNetworkName, parameters('networkSettings').subnet.meta.name)]"
                     },
                     "privateIPAddress": "[parameters('ilbIpAddress')]",
                     "privateIPAllocationMethod": "Static"
