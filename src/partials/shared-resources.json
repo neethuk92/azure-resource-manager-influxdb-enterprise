@@ -60,7 +60,7 @@
                 "Name": "LBFE",
                 "Properties": {
                     "subnet": {
-                        "Id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').virtualNetworkName, parameters('networkSettings').subnet.meta.name)]"
+                        "Id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('existingVNETName'), parameters('newSubnetName')]"
                     },
                     "privateIPAddress": "[parameters('ilbIpAddress')]",
                     "privateIPAllocationMethod": "Static"
@@ -94,7 +94,7 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', 'pip-influxdb')]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]"
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('existingVNETName')]"
             ],
             "properties": {
                 "frontendIPConfigurations": "[if(equals(parameters('loadBalancerType'), 'external'), variables('externalFELBConfig'), variables('internalFELBConfig'))]",
