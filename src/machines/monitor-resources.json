@@ -14,6 +14,12 @@
                 "description": "Admin password used when provisioning virtual machines"
             }
         },
+        "virtualNetworkResourceGroup": {
+            "type": "string",
+                "metadata": {
+                     "description": "Resource Group VNET is deployed in"
+                  }
+         },
         "location": {
             "type": "string",
             "metadata": {
@@ -42,7 +48,7 @@
     "variables": {
         "nicName": "[concat('nic-0-vm', parameters('namespace'))]",
         "vmName": "[concat('vm', parameters('namespace'))]",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').subnet.meta.vnet, parameters('networkSettings').subnet.meta.name)]",
+        "subnetRef": "[resourceId(parameters('virtualNetworkResourceGroup'),'Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').subnet.meta.vnet, parameters('networkSettings').subnet.meta.name)]",
         "linuxConfiguration": {
             "disablePasswordAuthentication": "true",
              "ssh": {
