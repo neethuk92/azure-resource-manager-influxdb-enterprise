@@ -14,6 +14,12 @@
                 "description": "Network settings object"
             }
         },
+       "virtualNetworkResourceGroup": {
+            "type": "string",
+             "metadata": {
+                 "description": "Resource Group VNET is deployed in"
+             }
+         },
         "loadBalancerType": {
             "type": "string",
             "defaultValue": "external",
@@ -48,7 +54,7 @@
                 "Name": "LBFE",
                 "Properties": {
                     "subnet": {
-                        "Id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').virtualNetworkName, parameters('networkSettings').subnet.meta.name)]"
+                        "Id": "[resourceId(parameters('virtualNetworkResourceGroup'),'Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').virtualNetworkName, parameters('networkSettings').subnet.meta.name)]"
                     },
                     "privateIPAddress": "[parameters('ilbIpAddress')]",
                     "privateIPAllocationMethod": "Static"
