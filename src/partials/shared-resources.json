@@ -82,8 +82,7 @@
             "type": "Microsoft.Network/loadBalancers",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', 'pip-influxdb')]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('networkSettings').virtualNetworkName)]"
+                "[concat('Microsoft.Network/publicIPAddresses/', 'pip-influxdb')]"
             ],
             "properties": {
                 "frontendIPConfigurations": "[if(equals(parameters('loadBalancerType'), 'external'), variables('externalFELBConfig'), variables('internalFELBConfig'))]",
