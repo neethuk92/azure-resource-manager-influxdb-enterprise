@@ -8,12 +8,6 @@
                 "description": "The namespace prefix for resources created by this template"
             }
         },
-        "virtualNetworkResourceGroup": {
-            "type": "string",
-            "metadata": {
-                 "description": "Resource Group VNET is deployed in"
-             }
-         },
         "location": {
             "type": "string",
             "metadata": {
@@ -46,7 +40,7 @@
         }
     },
     "variables": {
-        "subnetRef": "[resourceId(parameters('virtualNetworkResourceGroup'),'Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').subnet.meta.vnet, parameters('networkSettings').subnet.meta.name)]",
+        "subnetRef": "[resourceId(parameters('networkSettings').virtualNetworkResourceGroup,'Microsoft.Network/virtualNetworks/subnets', parameters('networkSettings').subnet.meta.vnet, parameters('networkSettings').subnet.meta.name)]",
         "vmName": "[concat('vm', parameters('namespace'))]",
         "publicIpName": "[concat('pip-', parameters('namespace'))]",
         "securityGroupName": "[concat('nsg-', parameters('namespace'))]",
