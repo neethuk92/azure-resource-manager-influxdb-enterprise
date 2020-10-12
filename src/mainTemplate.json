@@ -30,8 +30,11 @@
       "influxTags":{
          "type":"object",
          "defaultValue":{
-            "provider":"influxdata",
-            "tracking":"pid-300e07de-2c76-5904-be70-589ac8f15cf8"
+            "ApplicationName": "influxdb test",
+                "CostCenter": "121",
+                "Env": "Rese",
+                "TechContact": "test@colruytgroup.com",
+                "TechContactTeam": "TCS"
          },
          "metadata":{
             "description":"Unique identifiers to allow the Azure Infrastructure to understand the origin of resources deployed to Azure. You do not need to supply a value for this."
@@ -76,7 +79,7 @@
       },
       "vmSizeDataNodes":{
          "type":"string",
-         "defaultValue":"Standard_DS2_v2",
+         "defaultValue":"Standard_DS1_v2",
          "allowedValues":[
             "Standard_DS1_v2",
             "Standard_DS2_v2",
@@ -168,9 +171,9 @@
       },
       "virtualNetworkName":{
          "type":"string",
-         "defaultValue":"influx-vnet",
+         "defaultValue":"iot-vnet-r-we-001",
          "metadata":{
-            "description":"Virtual Network"
+            "description":"Existing Virtual Network"
          }
       },
       "virtualNetworkResourceGroup":{
@@ -306,16 +309,16 @@
       },
       "networkSettings":{
          "platformFaultDomainCount":"[if(contains(variables('locations'), variables('location')), variables('locations')[variables('location')].platformFaultDomainCount, 2)]",
-         "metaNodesIpPrefix":"10.0.0.9",
-         "dataNodesIpPrefix":"10.0.0.8",
+         "metaNodesIpPrefix":"10.111.193.2",
+         "dataNodesIpPrefix":"10.111.193.3"
          "managementPort":"22",
          "virtualNetworkResourceGroup":"[parameters('virtualNetworkResourceGroup')]",
          "virtualNetworkName":"[parameters('virtualNetworkName')]",
-         "addressPrefix":"10.0.0.0/24",
+         "addressPrefix":"10.111.192.0/22",
          "subnet":{
             "meta":{
-               "name":"meta",
-               "prefix":"10.0.0.64/26",
+               "name":"RestrictedSubnet",
+               "prefix":"10.111.193.0/25",
                "vnet":"[parameters('virtualNetworkName')]"
             }
          }
@@ -414,7 +417,7 @@
                   "value":"[parameters('loadBalancerType')]"
                },
                "ilbIpAddress":{
-                  "value":"10.0.0.70"
+                  "value":"10.111.193.40"
                }
             }
          }
