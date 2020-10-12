@@ -57,24 +57,7 @@
         ]
     },
     "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "pip-influxdb",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic"
-            }
-        },
-         {
-      "apiVersion": "2018-04-01",
-      "type": "Microsoft.Network/virtualNetworks/subnets",
-      "name": "[concat(parameters('networkSettings').virtualNetworkName, '/', parameters('networkSettings').subnet.meta.name)]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "addressPrefix": "[parameters('networkSettings').subnet.meta.prefix]"
-      }
-    },
+        
        
         {
             "apiVersion": "2019-04-01",
